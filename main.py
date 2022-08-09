@@ -1,4 +1,4 @@
-# Программа "ХОМЯК"
+# Программа "Маша"
 
 import config
 import stt
@@ -8,9 +8,11 @@ import datetime
 from num2t4ru import num2text
 import webbrowser
 import random
+import os.path
 
 
-print(f"{config.VA_NAME} (v{config.VA_VER}) начала свою работу ...")
+# print(f"{config.VA_NAME} (v{config.VA_VER}) начала свою работу ...")
+tts.va_speak('Программа начала свою работу')
 
 
 def va_respond(voice: str):
@@ -82,6 +84,12 @@ def execute_cmd(cmd: str):
         # chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
         firefox_path = '/snap/bin/firefox %s'
         webbrowser.get(firefox_path).open("https://gb.ru/education")
+
+    elif cmd == 'play music':
+        music_dir = '/Музыка'
+        songs = os.listdir(music_dir)
+        print(songs)
+        os.startfile(os.path.join(music_dir, songs[0]))
 
 
 # начать прослушивание команд
